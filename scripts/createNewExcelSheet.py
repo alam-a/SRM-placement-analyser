@@ -34,4 +34,3 @@ def driver():
     
     listOfPlaced = extractCommonData.extractCommonData(fileList)
     createNewExcelSheet(directory,listOfPlaced)
-driver()

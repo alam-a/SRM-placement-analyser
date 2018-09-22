@@ -1,11 +1,15 @@
 import xlrd
 
 
-def isPlaced(registerNo,listOfPlaced):
-    for x in listOfPlaced:
-        if x[0] == registerNo:
-            return True
-    return False
+def isPlaced(registerNo,listOfPlaced,noOfPlaced):
+    x=0
+    if noOfPlaced < 1:
+        return -1
+    while x < noOfPlaced:
+        if listOfPlaced[x][0] == registerNo:
+            return x
+        x+=1
+    return -1
 
 
 
@@ -23,6 +27,7 @@ def findTheStartRowOfData(sheet):
 def extractCommonData(fileList):
     
     listOfPlaced = []                       #For saving the details about placed students
+    noOfPlaced = 0
 
     for singleFile in fileList:
         
@@ -43,8 +48,13 @@ def extractCommonData(fileList):
                 break
 
             #Find if the student in this excel file's 'rowNo' row is already a placed student
-            if not isPlaced(sheet.cell_value(rowNo, colNo),listOfPlaced):        #If yes then increment the rowNo and continue the while loop
+            index = isPlaced(sheet.cell_value(rowNo, colNo),listOfPlaced,noOfPlaced)
+            if index > -1:        #If yes then increment the noOfOffers and continue the while loop
+                listOfPlaced[index][5] = listOfPlaced[index][5]+1
+            else:
                 listOfPlaced.append(sheet.row_values(rowNo)[1:])
+                noOfPlaced+=1
+                listOfPlaced[noOfPlaced-1].append(1)
             rowNo+=1
 
         rowNo-=1    #Decrement the rowNo as it doesn't contain meaningful data
