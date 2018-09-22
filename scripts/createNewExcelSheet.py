@@ -33,7 +33,5 @@ def driver():
     fileList = [directory+"InfosysResult.xlsx",directory+"TCSResult.xlsx",directory+"CognizantResult.xlsx",directory+"WiproResult.xlsx"]
     
     listOfPlaced = extractCommonData.extractCommonData(fileList)
-    print(len(listOfPlaced))
-    print(directory)
     createNewExcelSheet(directory,listOfPlaced)
 driver()
