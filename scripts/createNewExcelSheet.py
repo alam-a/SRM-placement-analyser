@@ -10,14 +10,16 @@ def createNewExcelSheet(directory,listOfPlaced):
     newSheet.set_column('C:C', 10)
     newSheet.set_column('D:D', 10)
     newSheet.set_column('E:E', 30)
+    newSheet.set_column('F:F', 10)
     row=0
     col=0
-    for registerNo,name,campus,degree,branch in listOfPlaced:
+    for registerNo,name,campus,degree,branch,offers in listOfPlaced:
         newSheet.write(row,col,registerNo)
         newSheet.write(row,col+1,name)
         newSheet.write(row,col+2,campus)
         newSheet.write(row,col+3,degree)
         newSheet.write(row,col+4,branch)
+        newSheet.write(row,col+5,offers)
         row+=1
     newBook.close()
 
