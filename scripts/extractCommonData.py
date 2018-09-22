@@ -50,12 +50,3 @@ def extractCommonData(fileList):
         rowNo-=1    #Decrement the rowNo as it doesn't contain meaningful data
 
     return listOfPlaced
-
-
-"""The files InfosysResult.xlsx, TCSResult.xlsx, CognizantResult.xlsx, and WiproResult.xlsx are already available in the 
-data folder, just add the directory of the folder where the cloned project is kept. Feel free to change the directory string
-to achieve the perfect directory in the 'fileList' tuple"""
-
-directory = r"C:/Users/Aftab Alam/Documents/GitHub"
-directory = directory + r"/SRM-placement-analyser/data/"
-fileList = [directory+"InfosysResult.xlsx",directory+"TCSResult.xlsx",directory+"CognizantResult.xlsx",directory+"WiproResult.xlsx"]
